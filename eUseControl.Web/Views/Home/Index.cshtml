@@ -1,0 +1,231 @@
+﻿
+@{
+     ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+     var bestsellerBooks = ViewBag.bestsellerBooks;
+     var cheapBooks = ViewBag.cheapBooks;
+}
+
+<div class="main-banner" style="background-image: url('@Url.Content("~/assets/images/banner-bg.jpg")')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="caption header-text">
+                
+                    <h2>Trăiește povești. Învață. Descoperă.</h2>
+                    <p>Bine ai venit în universul Arhiva Literelor – locul unde fiecare carte te poartă spre o altă lume. Citește, învață și inspiră-te oricând și oriunde, din confortul casei tale.</p> </p>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-2">
+                <div class="right-image">
+                    <img src="~/assets/images/home-img.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="~/assets/images/floare1.png" alt="" style="max-width: 60px;">
+                        </div>
+                        <h4>Universuri literare</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="~/assets/images/floare2.png" alt="" style="max-width: 60px;">
+                        </div>
+                        <h4>Economisește inteligent</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="~/assets/images/floare3.png" alt="" style="max-width: 60px;">
+                        </div>
+                        <h4>Lectură fără așteptare</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="~/assets/images/floare4.png" alt="" style="max-width; 50px;">
+                        </div>
+                        <h4>Titluri de valoare</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section trending">
+    <div class="container">
+         <div class="row">
+              <div class="col-lg-6">
+                   <div class="section-heading">
+                        <h2>Cărți populare </h2>
+                   </div>
+              </div>
+              <div class="col-lg-6">
+                   <div class="main-button">
+                        <a href="@Url.Action("Shop", "Home", new { type = "All" })">Vizualizează tot</a>
+                   </div>
+              </div>
+              @foreach (var book in bestsellerBooks)
+              {
+                   <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                             <div class="thumb">
+                                  <a href="@Url.Action("Product_details", "Home", new { name = book.Name })"><img src="@Url.Content("~/assets/images/books/" + book.Image)" alt="" width="150" height="400"></a>
+                                  <span class="price">@book.Price $</span>
+                             </div>
+                             <div class="down-content">
+                                  <span class="category">@book.Author</span>
+                                  <h4>@book.Name</h4>
+                                  <a href="@Url.Action("Product_details", "Home", new { name = book.Name })"><i class="fa fa-shopping-bag"></i></a>
+                             </div>
+                        </div>
+                   </div>
+              }
+         </div>
+    </div>
+</div>
+
+<div class="section most-played">
+    <div class="container">
+         <div class="row">
+              <div class="col-lg-6">
+                   <div class="section-heading">
+                        <h6>Recomandări </h6>
+                        <h2>Cele mai bune prețuri</h2>
+                   </div>
+              </div>
+              <div class="col-lg-6">
+                   <div class="main-button">
+                        <a href="@Url.Action("Shop", "Home", new { type = "All" })">Vizualizează toate produsele </a>
+                   </div>
+              </div>
+              @foreach (var book in cheapBooks)
+              {
+                   <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="item">
+                             <div class="thumb">
+                                  <a href="@Url.Action("Product_details", "Home", new { name = book.Name })"><img src="@Url.Content("~/assets/images/books/" + book.Image)" alt="" width="200" height="300"></a>
+                             </div>
+                             <div class="down-content">
+                                  <span class="category">@book.Author</span>
+                                  <h4>@book.Name</h4>
+                                  <a href="@Url.Action("Product_details", "Home", new { name = book.Name })">Răsfoiește</a>
+                             </div>
+                        </div>
+                   </div>
+              }
+         </div>
+    </div>
+</div>
+
+<div class="section categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h6>Secțiuni de lectură</h6>
+                    <h4>Explorează diferitele categorii de cărți disponibile în magazin</h4>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>Evadează într-o altă lume  literară</h4>
+                    <div class="thumb">
+                        <a href="@Url.Action("Shop", "Home", new { type = "Fictiune" })"><img src="~/assets/images/book1.png" alt="" width="200" height="200"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>Cărți care te transformă profund</h4>
+                    <div class="thumb">
+                        <a href="@Url.Action("Shop", "Home", new { type = "Dezvoltare personala" })"><img src="~/assets/images/book2.png" alt="" width="200" height="200"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>Versuri ce ating sufletul tău</h4>
+                    <div class="thumb">
+                        <a href="@Url.Action("Shop", "Home", new { type = "Poezie" })"><img src="~/assets/images/book3.png" alt="" width="200" height="200"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>Voci românești de neuitat</h4>
+                    <div class="thumb">
+                        <a href="@Url.Action("Shop", "Home", new { type = "Autori romini" })"><img src="~/assets/images/book4.png" alt="" width="200" height="200"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>O călătorie în timp prin filele istoriei</h4>
+                    <div class="thumb">
+                        <a href="@Url.Action("Shop", "Home", new { type = "Istorie" })"><img src="~/assets/images/book5.png" alt="" width="200" height="200"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="shop">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-heading">
+                                <h6>Magazin nostru</h6>
+                                <h2>Comandă azi.<em>Citește mâine.</em>Trăiește experiențe magice!</h2>
+                            </div>
+                            <p>Fiecare carte e o ușă către o lume nouă – deschide-o cu un click!</p>
+                            <div class="main-button">
+                                <a href="@Url.Action("Shop", "Home", new { type = "All" })">Comandă-ți aventura literară</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-2 align-self-end">
+                <div class="subscribe">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-heading">
+                                <h6>Proaspăt pe rafturile noastre</h6>
+                                <h2> Găsește-ți următoarea <em>lectură </em>preferată din colecția noastră!</h2>
+                            </div>
+                            <p>Fii printre primii care descoperă cele mai noi povești – aventuri literare captivante care abia așteaptă să fie citite!</p>
+                            <div class="main-button">
+                                <a href="@Url.Action("Shop", "Home", new { type = "All" })">Explorează noutățile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

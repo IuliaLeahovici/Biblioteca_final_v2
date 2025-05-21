@@ -1,0 +1,62 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>Arhiva Literelor | @ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    @Styles.Render("~/assets/css/bootstrap.min.css")
+    @Styles.Render("~/assets/css/templatemo-style.css")
+    @Styles.Render("~/assets/css/font-awesome.min.css")
+
+
+    @Styles.Render("~/assets/css/animate.css")
+    @Styles.Render("~/assets/css/flex-slider.css")
+    @Styles.Render("~/assets/css/fontawesome.css")
+    @Styles.Render("~/assets/css/owl.css")
+    @Styles.Render("~/assets/css/templatemo-lugx-gaming.css")
+    @Styles.Render("~/vendor/bootstrap/css/bootstrap.min.css")
+
+    @Styles.Render("~/assets/webfonts/fa-brands-400.ttf")
+    @Styles.Render("~/assets/webfonts/fa-brands-400.woff2")
+    @Styles.Render("~/assets/webfonts/fa-regular-400.ttf")
+    @Styles.Render("~/assets/webfonts/fa-regular-400.woff2")
+    @Styles.Render("~/assets/webfonts/fa-solid-900.ttf")
+    @Styles.Render("~/assets/webfonts/fa-solid-900.woff2")
+    @Styles.Render("~/assets/webfonts/fa-v4compatibility.ttf")
+    @Styles.Render("~/assets/webfonts/fa-v4compatibility.woff2")
+    <link href="~/vendor/bootstrap/css/app.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendor/bootstrap/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    @Html.Partial("_Footer")
+    <div>
+        <!-- Section for main scripts render -->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap/js")
+        @Scripts.Render("~/bundles/templatemo-script")
+        @Scripts.Render("~/assets/js/owl-carousel.js")
+        @Scripts.Render("~/assets/js/counter.js")
+        @Scripts.Render("~/assets/js/custom.js")
+        @Scripts.Render("~/assets/js/isotope.min.js")
+        @Scripts.Render("~/vendor/jquery/jquery.js")
+        @Scripts.Render("~/vendor/jquery/jquery.min.js")
+        @Scripts.Render("~/vendor/jquery/jquery.slim.js")
+        @Scripts.Render("~/vendor/jquery/jquery.slim.min.js")
+        @Scripts.Render("~/vendor/jquery/jquery.min.map")
+        @Scripts.Render("~/vendor/jquery/jquery.slim.min.map")
+        <script src="~/assets/js/main.js"></script>
+    </div>
+</body>
+</html>
