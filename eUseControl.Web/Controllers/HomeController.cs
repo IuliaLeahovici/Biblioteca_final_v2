@@ -30,5 +30,30 @@ namespace eUseControl.Web.Controllers
             ViewBag.cheapBooks = cheapBooks;
             return View();
         }
+        public ActionResult Product_details(string name)
+        {
+            GetHeaderData();
+            var book = _session.GetBooksList().FirstOrDefault(f => f.Name == name);
+            var booksList = _session.GetBooksList().Where(f => f.Type == book.Type).ToList().Take(5);
+
+            ViewBag.book = book;
+            ViewBag.booksList = booksList;
+            return View();
+        }
+        public ActionResult Shop(string type)
+        {
+            GetHeaderData();
+            List<BookTable> booksList;
+            if (type == "All")
+            {
+                booksList = _session.GetBooksList();
+            }
+            else
+            {
+                booksList = _session.GetBooksList().Where(f => f.Type == type).ToList();
+            }
+            ViewBag.booksList = booksList;
+            return View();
+        }
     }
 }
