@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Product_details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var book = ViewBag.book;
+    var booksList = ViewBag.booksList;
+}
+
+<div class="page-heading header-text">
+    <h3>@book.Name</h3>
+</div>
+
+<div class="single-product section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-image">
+                    <img src="@Url.Content("~/assets/images/books/" + book.Image)" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <h4>@book.Name</h4>
+                <span class="price">@book.Price $</span>
+                <p>"@book.Description</p>
+                <form id="qty" action="#">
+                    <input type="number" min="1" class="form-control" id="1" aria-describedby="quantity" placeholder="1">
+                    <button type="submit"><i class="fa fa-shopping-bag"></i> Adaugă în coș</button>
+                </form>
+                <ul>
+                    <li><span>Autor:</span>@book.Author</li>
+                    <li><span>Editură:</span>@book.Edit</li>
+                    <li><span>Gen</span>@book.Type</li>
+
+                </ul>
+            </div>
+            <div class="col-lg-12">
+                <div class="sep"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="more-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-content">
+                    <div class="row">
+                        <div class="nav-wrapper ">
+                            <button class="nav-link" id="description-tab" type="button">Descriere</button>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                <p>"@book.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section categories related-games">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h6>Mai mult</h6>
+                    <h2>Lecturi asemămătoare</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main-button">
+                    <a href="@Url.Action("Shop", "Home", new { type = book.Type })">Vizualizează tot</a>
+                </div>
+            </div>
+            @foreach (var similarBook in booksList)
+            {
+                <div class="col-lg col-sm-6 col-xs-12">
+                    <div class="item">
+                        <h4>@similarBook.Name</h4>
+                        <div class="thumb">
+                            <a href="@Url.Action("Product_details", "Home", new { name = similarBook.Name })"><img src="@Url.Content("~/assets/images/books/" + similarBook.Image)" alt="" width="200" height="300"></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
