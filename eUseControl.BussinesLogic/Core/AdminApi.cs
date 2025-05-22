@@ -15,6 +15,50 @@ namespace eUseControl.BussinesLogic.Core
     public class AdminApi
     {
         //Adaugare ,stergere ,editare utilizator 
+        internal Response AddUserAction(AddUserData user)
+        {
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(user.Email))
+            {
+                using (var db = new TableContext())
+                {
+                    UserTable existingEmail = db.Users.FirstOrDefault(u => u.Email == user.Email);
+                    UserTable existingUsername = db.Users.FirstOrDefault(u => u.Username == user.Username);
+                    if (existingEmail != null)
+                    {
+                        return new Response { Status = false, StatusMsg = "eroare." };
+                    }
+                    if (existingUsername != null)
+                    {
+                        return new Response { Status = false, StatusMsg = "eroare." };
+                    }
+
+                    var newUser = new UserTable
+                    {
+                        Username = user.Username,
+                        Password = LoginHelper.HashGen(user.Password),
+                        Email = user.Email,
+                        Level = user.Level,
+                        LastLogin = DateTime.Now,
+                        LastIp = "1:1:1:1",
+                        Image = user.Username + ".png"
+                    };
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
+                }
+                return new Response { Status = true };
+            }
+            else
+                return new Response { Status = false };
+        }
+        internal void DeleteUserAction(int id)
+        {
+            //implementarea logicii pentru ștergerea unui utilizator dupa id
+        }
+        internal Response EditUserAction(EditUserData data)
+        {
+            //implementarea logicii pentru editare!!!
+        }
         //adăugare carte 
         internal Response AddBookAction(AddBookData book)
         {

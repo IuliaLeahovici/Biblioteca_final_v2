@@ -9,5 +9,6 @@ namespace eUseControl.Data.Entities.User
     public class Response
     {
         public bool Status { get; set; }
+        public string StatusMsg { get; set; }
     }
 }
