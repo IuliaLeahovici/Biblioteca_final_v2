@@ -1,0 +1,79 @@
+
+@{
+    ViewBag.Title = "EditBook";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var book = ViewBag.book;
+    List<string> TypeList = ViewBag.TypeList;
+}
+@model eUseControl.Web.Models.EditBook
+
+<div class="page-heading header-text">
+    <h3>Adaugã Carte Nouã</h3>
+</div>
+
+<div class="contact-page section most-played">
+    <div class="container">
+        <div class="right-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-text">
+                        <h3 class="mb-lg-5">Editeazã Carte Existentã</h3>
+                    </div>
+                    @Html.ValidationSummary(true)
+                    @using (Html.BeginForm("EditBook", "Admin", FormMethod.Post, new { @id = "EditBookForm", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form id="contact-form" action="" method="post">
+                            <div class="row">
+                                <div class="col-lg-12 mb-2">
+                                    @Html.LabelFor(m => m.Name, "Nume:", new { @class = "mb-2" })
+                                    @Html.TextBoxFor(m => m.Name, new
+                               {
+                                   //de adaugat atribute
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    @Html.LabelFor(m => m.Price, "Pre?:", new { @class = "mb-2" })
+                                    @Html.TextBoxFor(m => m.Price, new
+                               {
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    @Html.LabelFor(m => m.Description, "Descriere:", new { @class = "mb-2" })
+                                    @Html.TextBoxFor(m => m.Description, new
+                               {
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    @Html.LabelFor(m => m.Author, "Autor:", new { @class = "mb-2" })
+                                    @Html.TextBoxFor(m => m.Author, new
+                               {
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    @Html.LabelFor(m => m.Edit, "Editura:", new { @class = "mb-2" })
+                                    @Html.TextBoxFor(m => m.Edit, new
+                               {
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    @Html.DropDownListFor(m => m.Type, new SelectList(ViewBag.TypeList as System.Collections.IEnumerable, "Text"), "Selecteazã un gen..", new
+                               {
+                               })
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <input type="file" id="imageFile" name="imageFile" accept="image/png" class="form-control" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="orange-button">Editeazã Carte</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
