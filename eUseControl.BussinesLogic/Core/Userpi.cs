@@ -17,6 +17,7 @@ namespace eUseControl.BussinesLogic.Core
 {
     public class UserApi
     {
+        //userloginaction!
         internal Response UserRegisterAction(UregisterData data)
         {
             UserTable existingEmail;
@@ -60,5 +61,25 @@ namespace eUseControl.BussinesLogic.Core
             else
                 return new Response { Status = false };
         }
+        internal List<UserTable> GetUsersListAction()
+        {
+            List<UserTable> users;
+            using (var db = new TableContext())
+            {
+                users = db.Users.ToList();
+            }
+            return users;
+        }
+
+        internal List<BookTable> GetBooksListAction()
+        {
+            List<BookTable> books;
+            using (var db = new TableContext())
+            {
+                books = db.Books.ToList();
+            }
+            return books;
+        }
+        //cookie
     }
 }

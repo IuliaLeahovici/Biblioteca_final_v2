@@ -14,6 +14,7 @@ namespace eUseControl.BussinesLogic.Core
 {
     public class AdminApi
     {
+        //Adaugare ,stergere ,editare utilizator 
         //adăugare carte 
         internal Response AddBookAction(AddBookData book)
         {
@@ -52,5 +53,20 @@ namespace eUseControl.BussinesLogic.Core
             }
         }
         //editare carte 
+        internal Response EditBookAction(EditBookData data)
+        {
+            using (var db = new TableContext())
+            {
+                BookTable book = db.Books.FirstOrDefault(u => u.Name == data.Name);
+                book.Name = data.Name;
+                book.Price = data.Price;
+                book.Description = data.Description;
+                book.Author = data.Author;
+                book.Edit = data.Edit;
+                book.Type = data.Type;
+                db.SaveChanges();
+            }
+            return new Response { Status = true };
+        }
     }
 }

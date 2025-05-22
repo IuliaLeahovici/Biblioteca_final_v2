@@ -20,6 +20,10 @@ namespace eUseControl.BussinesLogic.AppBL
         {
             return EditUserAction(data);
         }
+        public void DeleteUser(int id)
+        {
+            DeleteUserAction(id);
+        }
 
         public Response AddBook(AddBookData book)
         {
@@ -28,6 +32,10 @@ namespace eUseControl.BussinesLogic.AppBL
         public Response EditBook(EditBookData data)
         {
             return EditBookAction(data);
+        }
+        public void DeleteBook(int id)
+        {
+            DeleteBookAction(id);
         }
     }
 }
