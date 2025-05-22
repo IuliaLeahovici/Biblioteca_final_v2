@@ -57,6 +57,7 @@
     <Compile Include="Entities\Admin\EditUserData.cs" />
     <Compile Include="Entities\Product\BookTable.cs" />
     <Compile Include="Entities\User\Response.cs" />
+    <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\UregisterData.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />

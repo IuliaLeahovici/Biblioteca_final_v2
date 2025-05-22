@@ -14,7 +14,7 @@ namespace eUseControl.BussinesLogic.Core
 {
     public class AdminApi
     {
-        //Adaugare ,stergere ,editare utilizator 
+        //Adaugare utilizator 
         internal Response AddUserAction(AddUserData user)
         {
             var validate = new EmailAddressAttribute();
@@ -51,13 +51,34 @@ namespace eUseControl.BussinesLogic.Core
             else
                 return new Response { Status = false };
         }
+        //stergere utilizator
         internal void DeleteUserAction(int id)
         {
-            //implementarea logicii pentru ștergerea unui utilizator dupa id
+            using (var db = new TableContext())
+            {
+                UserTable user = db.Users.FirstOrDefault(u => u.Id == id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+            }
         }
+        //editare utilizator
         internal Response EditUserAction(EditUserData data)
         {
-            //implementarea logicii pentru editare!!!
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(data.Email))
+            {
+                using (var db = new TableContext())
+                {
+                    UserTable user = db.Users.FirstOrDefault(u => u.Email == data.Email);
+                    user.Username = data.Username;
+                    user.Email = data.Email;
+                    user.Level = data.Level;
+                    db.SaveChanges();
+                }
+                return new Response { Status = true };
+            }
+            else
+                return new Response { Status = false };
         }
         //adăugare carte 
         internal Response AddBookAction(AddBookData book)
