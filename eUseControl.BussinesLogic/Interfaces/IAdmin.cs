@@ -10,6 +10,10 @@ namespace eUseControl.BussinesLogic.Interfaces
 {
     public interface IAdmin
     {
+        Response AddUser(AddUserData user);
+        void DeleteUser(int id);
+        Response EditUser(EditUserData data);
+
         Response AddBook(AddBookData book);
         void DeleteBook(int id);
         Response EditBook(EditBookData data);

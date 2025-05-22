@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="AppBL\AdminBL.cs" />
     <Compile Include="AppBL\SessionBL.cs" />
+    <Compile Include="AppBL\TableContext.cs" />
     <Compile Include="BussinessLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\Userpi.cs" />

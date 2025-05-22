@@ -12,13 +12,18 @@ namespace eUseControl.BussinesLogic.AppBL
 {
     public class AdminBL : AdminApi, IAdmin
     {
+        public Response AddUser(AddUserData user)
+        {
+            return AddUserAction(user);
+        }
+        public Response EditUser(EditUserData data)
+        {
+            return EditUserAction(data);
+        }
+
         public Response AddBook(AddBookData book)
         {
             return AddBookAction(book);
-        }
-        public void DeleteBook(int id)
-        {
-            DeleteBookAction(id);
         }
         public Response EditBook(EditBookData data)
         {

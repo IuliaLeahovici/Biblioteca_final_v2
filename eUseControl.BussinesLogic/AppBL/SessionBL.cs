@@ -21,5 +21,14 @@ namespace eUseControl.BussinesLogic.AppBL
         {
             return UserRegisterAction(data);
         }
+        public List<UserTable> GetUsersList()
+        {
+            return GetUsersListAction();
+        }
+        public List<BookTable> GetBooksList()
+        {
+            return GetBooksListAction();
+        }
+        //cookie-uri pentru autentificare.
     }
 }
