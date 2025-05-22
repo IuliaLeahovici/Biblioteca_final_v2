@@ -1,13 +1,22 @@
-﻿using System;
+﻿using eUseControl.BussinesLogic.Interfaces;
+using eUseControl.BussinesLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using eUseControl.Data.Entities.Product;
 
 namespace eUseControl.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        private readonly ISession _session;
+        public HomeController()
+        {
+            var bl = new BussinessLogic();
+            _session = bl.GetSessionBL();
+        }
         public void GetHeaderData()
         {
             SessionStatus();
@@ -20,7 +29,6 @@ namespace eUseControl.Web.Controllers
             }
             ViewBag.userStatus = userStatus;
         }
-        // GET: Home
         public ActionResult Index()
         {
             GetHeaderData();

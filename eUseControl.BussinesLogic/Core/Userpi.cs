@@ -18,6 +18,36 @@ namespace eUseControl.BussinesLogic.Core
     public class UserApi
     {
         //userloginaction!
+        internal Response UserLoginAction(ULoginData data)
+        {
+            UserTable result;
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(data.Email))
+            {
+                //var pass = LoginHelper.HashGen(data.Password);
+                //System.Diagnostics.Debug.WriteLine("Password hash: " + pass);
+                using (var db = new TableContext())
+                {
+                    result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == data.Password);
+                }
+
+                if (result == null)
+                {
+                    return new Response { Status = false, StatusMsg = "eror" };
+                }
+
+                using (var todo = new TableContext())
+                {
+                    result.LastIp = data.LoginIp;
+                    result.LastLogin = data.LoginDateTime;
+                    todo.Entry(result).State = EntityState.Modified;
+                    todo.SaveChanges();
+                }
+                return new Response { Status = true };
+            }
+            else
+                return new Response { Status = false };
+        }
         internal Response UserRegisterAction(UregisterData data)
         {
             UserTable existingEmail;
