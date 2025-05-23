@@ -29,36 +29,56 @@
                                     @Html.LabelFor(m => m.Name, "Nume:", new { @class = "mb-2" })
                                     @Html.TextBoxFor(m => m.Name, new
                                {
-                                   //de adaugat atribute
+                                   placeholder = "Editeazã titlul cãr?ii...",
+                                   @class = "form-control",
+                                   required = "required",
+                                   @readonly = "readonly"
                                })
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     @Html.LabelFor(m => m.Price, "Pre?:", new { @class = "mb-2" })
                                     @Html.TextBoxFor(m => m.Price, new
                                {
+                                   placeholder = "Editeazã pre?ul...",
+                                   @class = "form-control",
+                                   required = "required",
+                                   type = "number",
+                                   min = 1,
+                                   max = 999
                                })
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     @Html.LabelFor(m => m.Description, "Descriere:", new { @class = "mb-2" })
                                     @Html.TextBoxFor(m => m.Description, new
                                {
+                                   placeholder = "Editeazã descrierea...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     @Html.LabelFor(m => m.Author, "Autor:", new { @class = "mb-2" })
                                     @Html.TextBoxFor(m => m.Author, new
                                {
+                                   placeholder = "Editeazã numele autorului...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-2">
                                     @Html.LabelFor(m => m.Edit, "Editura:", new { @class = "mb-2" })
                                     @Html.TextBoxFor(m => m.Edit, new
                                {
+                                   placeholder = "Editeazã editura cãr?ii...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.DropDownListFor(m => m.Type, new SelectList(ViewBag.TypeList as System.Collections.IEnumerable, "Text"), "Selecteazã un gen..", new
                                {
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">

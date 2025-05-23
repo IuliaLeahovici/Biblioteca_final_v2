@@ -28,32 +28,51 @@
                                 <div class="col-lg-12 mb-3">
                                     @Html.TextBoxFor(m => m.Name, new
                                {
-                                   // de adaugat atribute la formular 
+                                   placeholder = "Introdu titlul cãr?ii...",
+                                   @class = "form-control",
+                                   required = "required"
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.TextBoxFor(m => m.Price, new
                                {
+                                   placeholder = "Seteazã pre?ul...",
+                                   @class = "form-control",
+                                   required = "required",
+                                   type = "number",
+                                   min = 1,
+                                   max = 999
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.TextBoxFor(m => m.Description, new
                                {
+                                   placeholder = "Adaugã o descriere...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.TextBoxFor(m => m.Author, new
                                {
+                                   placeholder = "Scrie numele autorului...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.TextBoxFor(m => m.Edit, new
                                {
+                                   placeholder = "Adaugã editura cãr?ii...",
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     @Html.DropDownListFor(m => m.Type, new SelectList(ViewBag.TypeList as System.Collections.IEnumerable, "Text"), "Alege genul literar...", new
                                {
+                                   @class = "form-control",
+                                   required = "required",
                                })
                                 </div>
                                 <div class="col-lg-12 mb-3">
@@ -63,7 +82,6 @@
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="orange-button">Adaugã Carte</button>
                                     </fieldset>
-                                    
                                 </div>
                             </div>
                         </form>
@@ -73,4 +91,29 @@
         </div>
     </div>
 </div>
- 
+
+<div class="section trending">
+    <div class="container">
+        <div class="row">
+            @foreach (var book in booksList)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="@Url.Content("~/assets/images/books/" + book.Image)" alt="" width="150" height="400">
+                            <span class="price">@book.Price $</span>
+                        </div>
+                        <div class="down-content">
+                            <span class="category">@book.Author</span>
+                            <h4>@book.Name</h4>
+                        </div>
+                        <div class="text-center mb-2">
+                            <a href="@Url.Action("DeleteBook", "Admin", new {id = book.Id})" class="btn btn-danger">?terge</a>
+                            <a href="@Url.Action("EditBook", "Admin", new {id = book.Id})" class="btn btn-info">Editeazã</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
