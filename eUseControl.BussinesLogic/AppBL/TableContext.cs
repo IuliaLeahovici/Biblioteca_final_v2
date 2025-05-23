@@ -13,7 +13,9 @@ namespace eUseControl.BussinesLogic.AppBL
     {
         public TableContext() : base("name=bookify")
         {
-            //user, session, book
         }
+        public virtual DbSet<UserTable> Users { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<BookTable> Books { get; set; }
     }
-}//!
+}
