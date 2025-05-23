@@ -280,6 +280,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -327,7 +328,6 @@
     <Folder Include="assets\images\books\" />
     <Folder Include="assets\images\users\" />
     <Folder Include="Attributes\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />

@@ -8,7 +8,8 @@ namespace eUseControl.Data.Enums
 {
     public enum URole 
     {
-        User = 0,
-        Admin = 1
+        User=0,
+        Moderator=1,
+        Admin=2
     }
 }
