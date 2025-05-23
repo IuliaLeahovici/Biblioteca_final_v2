@@ -313,6 +313,9 @@
     <Content Include="Views\Home\Product_details.cshtml" />
     <Content Include="Views\Admin\AddBook.cshtml" />
     <Content Include="Views\Admin\EditBook.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
