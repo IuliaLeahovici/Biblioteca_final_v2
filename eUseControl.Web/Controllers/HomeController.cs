@@ -38,6 +38,11 @@ namespace eUseControl.Web.Controllers
             ViewBag.cheapBooks = cheapBooks;
             return View();
         }
+        public ActionResult Contact()
+        {
+            GetHeaderData();
+            return View();
+        }
         public ActionResult Product_details(string name)
         {
             GetHeaderData();
