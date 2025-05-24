@@ -284,6 +284,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddBook.cs" />
+    <Compile Include="Models\AddUser.cs" />
+    <Compile Include="Models\EditBook.cs" />
+    <Compile Include="Models\EditUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -328,7 +332,6 @@
     <Folder Include="assets\images\books\" />
     <Folder Include="assets\images\users\" />
     <Folder Include="Attributes\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
