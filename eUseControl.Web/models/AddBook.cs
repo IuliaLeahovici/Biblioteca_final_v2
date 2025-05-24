@@ -18,6 +18,8 @@ namespace eUseControl.Web.Models
 
         public string Edit { get; set; }
 
+        public string Type { get; set; } //gen
 
+        public string Image { get; set; } //imagine
     }
 }

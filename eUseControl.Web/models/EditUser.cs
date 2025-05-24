@@ -14,5 +14,9 @@ namespace eUseControl.Web.Models
 
         public string Email { get; set; }
 
+        public URole Level { get; set; } //rol
+
+        public string Image { get; set; } //imagine profil
+
     }
 }

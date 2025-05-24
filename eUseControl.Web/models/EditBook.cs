@@ -17,5 +17,8 @@ namespace eUseControl.Web.Models
 
         public string Edit { get; set; }
 
+        public string Type { get; set; } //genul cartii
+
+        public string Image { get; set; } //imagine 
     }
 }

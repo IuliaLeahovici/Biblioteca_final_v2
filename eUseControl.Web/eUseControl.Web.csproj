@@ -278,6 +278,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\AdminModeAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
@@ -331,7 +332,6 @@
   <ItemGroup>
     <Folder Include="assets\images\books\" />
     <Folder Include="assets\images\users\" />
-    <Folder Include="Attributes\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
