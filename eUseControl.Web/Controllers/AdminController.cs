@@ -141,5 +141,108 @@ namespace eUseControl.Web.Controllers
             }
             return View();
         }
+        public ActionResult AddBook()
+        {
+            GetHeaderData();
+            List<BookTable> booksList = _session.GetBooksList();
+            ViewBag.booksList = booksList;
+            ViewBag.TypeList = TypeList;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddBook(AddBook book, HttpPostedFileBase imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = Mapper.Map<AddBookData>(book);
+
+                if (imageFile != null && imageFile.ContentType == "image/png")
+                {
+                    using (var db = new TableContext())
+                    {
+                        var path = Path.Combine(Server.MapPath($"~/assets/images/books/{data.Name}.png"));
+                        imageFile.SaveAs(path);
+                    }
+                }
+
+                ViewBag.TypeList = TypeList;
+
+                var addBook = _admin.AddBook(data);
+                if (addBook.Status)
+                {
+                    return RedirectToAction("AddBook", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", addBook.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        public ActionResult DeleteBook(int id)
+        {
+            using (var db = new TableContext())
+            {
+                BookTable book = db.Books.FirstOrDefault(u => u.Id == id);
+                var path = Path.Combine(Server.MapPath($"~/assets/images/books/{book.Image}"));
+                System.IO.File.Delete(path);
+            }
+            _admin.DeleteBook(id);
+            return RedirectToAction("AddBook", "Admin");
+        }
+
+        public ActionResult EditBook(int id)
+        {
+            GetHeaderData();
+            using (var db = new TableContext())
+            {
+                var book = db.Books.FirstOrDefault(u => u.Id == id);
+                var data = Mapper.Map<EditBook>(book);
+
+                ViewBag.TypeList = TypeList;
+                ViewBag.book = book;
+                return View(data);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditBook(EditBook book, HttpPostedFileBase imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (imageFile != null && imageFile.ContentType == "image/png")
+                {
+                    using (var db = new TableContext())
+                    {
+                        BookTable existingBook = db.Books.FirstOrDefault(u => u.Name == book.Name);
+                        var path = Path.Combine(Server.MapPath($"~/assets/images/books/{existingBook.Name}.png"));
+                        existingBook.Image = existingBook.Name + ".png";
+                        db.SaveChanges();
+                        System.IO.File.Delete(path);
+                        imageFile.SaveAs(path);
+                    }
+                }
+                ViewBag.TypeList = TypeList;
+
+                var data = Mapper.Map<EditBookData>(book);
+
+                var editBook = _admin.EditBook(data);
+                if (editBook.Status)
+                {
+                    return RedirectToAction("AddBook", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", editBook.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
     }
 }
