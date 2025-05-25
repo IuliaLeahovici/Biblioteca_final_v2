@@ -77,3 +77,29 @@
         </div>
     </div>
 </div>
+
+<div class="section trending">
+    <div class="container">
+        <div class="row">
+            @foreach (var user in usersList)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="@Url.Content("~/assets/images/users/" + user.Image)" alt="" width="150" height="300">
+                            <span class="price">@user.Level</span>
+                        </div>
+                        <div class="down-content">
+                            <span class="category">@user.Email</span>
+                            <h4>@user.Username</h4>
+                        </div>
+                        <div class="text-center mb-2">
+                            <a href="@Url.Action("DeleteUser", "Admin", new {id = user.Id})" class="btn btn-danger">Șterge</a>
+                            <a href="@Url.Action("EditUser", "Admin", new {id = user.Id})" class="btn btn-info">Editează</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
