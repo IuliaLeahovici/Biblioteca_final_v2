@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="page-heading header-text">
+    <h3>Contactează-ne</h3>
+</div>
+
+<div class="contact-page section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="left-text">
+                    <div class="section-heading">
+                        <h2>Lasă-ne un mesaj!</h2>
+                    </div>
+                    <p>Ai nevoie de ajutor, informații sau vrei doar să ne transmiți o sugestie? Suntem mereu la un mesaj distanță. Contactează-ne cu încredere – fie că ne scrii, ne suni sau ne cauți online, echipa noastră este aici pentru a-ți oferi sprijin și recomandări potrivite. Împreună găsim cartea perfectă pentru tine!</p>
+                   
+                    <ul>
+                        <li><span>Instagram</span> arhiva_literelor</li>
+                        <li><span>Facebook</span> Arhiva Literelor</li>
+                        <li><span>Telefon</span> +373 61161121</li>
+                        <li><span>Email</span> contact@arhivaliterelor.md</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="contact-form" action="" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input type="text" name="name" id="name" placeholder="Nume..." autocomplete="on" required>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input type="text" name="surname" id="surname" placeholder="Prenume..." autocomplete="on" required>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" id="message" placeholder="Mesajul tău"></textarea>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="orange-button">Trimite</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
