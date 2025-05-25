@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@model eUseControl.Web.Models.UserLogin
+
+<div class="account-pages mt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center w-75 m-auto">
+                            <a href="/Home/Index">
+
+                            </a>
+                            <p class="text-muted mb-4 mt-3">Conectează-te folosind adresa ta de email și parola.</p>
+                        </div>
+                        @Html.ValidationSummary(true)
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <form action="/" novalidate id="LoginForm" method="post">
+
+                                <div class="form-group mb-3">
+                                    @Html.LabelFor(m => m.Email, new { @class = "emailadress" })
+                                    @Html.TextBoxFor(m => m.Email, new
+                               {
+                                    placeholder = "examplu@gmail.com",
+                                    title = "Enter your email",
+                                    value = "",
+                                    name = "email",
+                                    id = "emailaddress",
+                                    @class = "form-control"
+                               })
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    @Html.LabelFor(m => m.Password, "Parolă", new { @class = "password" })
+                                    @Html.TextBoxFor(m => m.Password, new
+                               {
+                                   placeholder = "parola",
+                                   title = "Enter your password",
+                                   value = "",
+                                   type = "password",
+                                    name = "password",
+                                   id = "password",
+                                   @class = "form-control"
+                               })
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                        <label class="custom-control-label" for="checkbox-signin">Păstrează-mă autentificat</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button type="submit" class="btn btn-primary btn-block" href="/Home/Index"> Conectare </button>
+                                </div>
+
+                            </form>
+                        }
+
+
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p> <a href="pages-recoverpw.html" class="text-muted ml-1"> Ați uitat parola?</a></p>
+                        <p class="text-muted">Nu aveți un cont? <a href="/Register/Index" class="text-primary font-weight-medium ml-1">Înregistrați-vă</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

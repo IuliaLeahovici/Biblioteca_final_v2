@@ -327,6 +327,7 @@
     <Content Include="Views\Admin\AddUser.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -337,7 +338,6 @@
   <ItemGroup>
     <Folder Include="assets\images\books\" />
     <Folder Include="assets\images\users\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
