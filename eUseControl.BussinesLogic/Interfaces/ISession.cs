@@ -15,5 +15,8 @@ namespace eUseControl.BussinesLogic.Interfaces
         Response UserRegister(UregisterData data);
         List<UserTable> GetUsersList();
         List<BookTable> GetBooksList();
+        HttpCookie GenCookie(string loginCredential);
+        UserMinimal GetUserByCookie(string apiCookieValue);
+
     }
 }

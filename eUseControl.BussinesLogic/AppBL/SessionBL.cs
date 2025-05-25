@@ -29,6 +29,13 @@ namespace eUseControl.BussinesLogic.AppBL
         {
             return GetBooksListAction();
         }
-        //cookie-uri pentru autentificare.
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+        public UserMinimal GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
+        }
     }
 }
