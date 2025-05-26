@@ -10,24 +10,25 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="/Home/Index" class="logo"><img src="~/assets/images/logobook1.png" alt="" style=" width: 500px;"></a>
+                    <a href="/Home/Index" class="logo"><img src="~/assets/images/logobook1.png" alt="" style=" width: 300px;"></a>
                     <ul class="nav">
-                         <li><i class="bx bx-chevron-right"></i><a href="/Home/Index">Acasă</a></li>
-                         <li><i class="bx bx-chevron-right"></i><a href="/Home/Contact">Contact</a></li>
-                         <li><i class="bx bx-chevron-right"></i><a href="@Url.Action("Shop", "Home", new { type = "All" })">Magazin</a></li>
-                         @if (userStatus == "login")
-                         {
-                              if (user != null && (int)user.Level == 2)
-                              {
-                                   <li><i class="bx bx-chevron-right"></i><a href="/Admin/AddUser">Utilizator Nou</a></li>
-                                   <li><i class="bx bx-chevron-right"></i><a href="/Admin/AddBook">Carte Nouă</a></li>
-                              }
-                              <li><i class="bx bx-chevron-right"></i><a href="/Login/Index">Log Out</a></li>
-                         }
-                         else
-                         {
-                              <li><i class="bx bx-chevron-right"></i><a href="/Login/Index">Log In</a></li>
-                         }
+                        <li><i class="bx bx-chevron-right"></i><a href="/Home/Index">Acasă</a></li>
+                        <li><i class="bx bx-chevron-right"></i><a href="/Home/Contact">Contact</a></li>
+                        <li><a href="@Url.Action("Cart", "Home")">Coș</a></li>
+                        <li><i class="bx bx-chevron-right"></i><a href="@Url.Action("Shop", "Home", new { type = "All" })">Magazin</a></li>
+                        @if (userStatus == "login")
+                        {
+                            if (user != null && (int)user.Level == 2)
+                            {
+                                <li><i class="bx bx-chevron-right"></i><a href="/Admin/AddUser">Utilizator Nou</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="/Admin/AddBook">Carte Nouă</a></li>
+                            }
+                            <li><i class="bx bx-chevron-right"></i><a href="/Login/Index">Log Out</a></li>
+                        }
+                        else
+                        {
+                            <li><i class="bx bx-chevron-right"></i><a href="/Login/Index">Log In</a></li>
+                        }
                     </ul>
                 </nav>
             </div>
