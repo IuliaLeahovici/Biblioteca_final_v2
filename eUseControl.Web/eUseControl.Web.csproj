@@ -329,6 +329,7 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -339,7 +340,6 @@
   <ItemGroup>
     <Folder Include="assets\images\books\" />
     <Folder Include="assets\images\users\" />
-    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

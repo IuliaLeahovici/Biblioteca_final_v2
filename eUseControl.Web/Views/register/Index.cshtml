@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@model eUseControl.Web.Models.UserRegister
+
+<div class="account-pages mt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+                    <div class="card-body p-4">
+
+                        <div class="text-center w-75 m-auto">
+                            <a href="index.html">
+
+                            </a>
+                            <p class="text-muted mb-4 mt-3">Încă nu ai cont? Îți poți face unul rapid, în mai puțin de un minut.</p>
+                        </div>
+
+                        @Html.ValidationSummary(true)
+                        @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @id = "RegisterForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <form action="/" novalidate id="RegisterForm" method="post">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Username, "Nume utilizator ", new { @class = "Username" })
+                                    @Html.TextBoxFor(m => m.Username, new
+                               {
+                                    placeholder = "Nume utilizator",
+                                    title = "Enter your Username",
+                                    value = "",
+                                    name = "Username",
+                                    id = "fullname",
+                                    required = true,
+                                    @class = "form-control"
+                               })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, "Email", new { @class = "emailadress" })
+                                    @Html.TextBoxFor(m => m.Email, new
+                               {
+                                    placeholder = "examplu@gmail.com",
+                                    title = "Enter your Email",
+                                    value = "",
+                                    name = "Email",
+                                    id = "emailaddress",
+                                    type = "email",
+                                    required = true,
+                                    @class = "form-control"
+                               })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, "Parolă", new { @class = "password" })
+                                    @Html.TextBoxFor(m => m.Password, new
+                               {
+                                    placeholder = "Parolă",
+                                    title = "Enter your Password",
+                                    value = "",
+                                    name = "Password",
+                                    id = "password",
+                                    type = "password",
+                                    required = true,
+                                    onblur = "verificaParole()",
+                                    @class = "form-control"
+                               })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Repetă parola</label>
+
+                                    <input class="form-control" type="password" required id="repeat-password" placeholder="Repetă parola" onblur="verificaParole()">
+                                    <div id="error-message-match" class="error-message" style="display:none; color: red;">Parolele nu coincid!</div>
+                                    <div id="error-message-length" class="error-message" style="display:none; color: red;">Parola trebuie să conțină cel puțin 8 caractere!</div>
+                                    <div id="error-message-policy" class="error-message" style="display:none; color: red;">Parola trebuie să conțină cel puțin o literă mare, o literă mică, o cifră și un caracter special!</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                        <label class="custom-control-label" for="checkbox-signup">Accept <a href="javascript: void(0);" class="text-dark">termenii și condițiile</a></label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-primary btn-block" type="submit" id="submit-button" href="/Home/Index"> Înregistrează-te </button>
+                                </div>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Ai un cont deja? <a href="/Login/Index" class="text-muted font-weight-medium ml-1">Conectează-te</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
