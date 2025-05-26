@@ -53,6 +53,49 @@ namespace eUseControl.Web.Controllers
             ViewBag.booksList = booksList;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddToCart(string name)
+        {
+            GetHeaderData();
+
+            var book = _session.GetBooksList().FirstOrDefault(f => f.Name == name);
+            if (book == null)
+            {
+                TempData["error"] = "Produsul nu a fost găsit.";
+                return RedirectToAction("Product_details", new { name = name });
+            }
+
+            List<BookTable> cart = Session["Cart"] as List<BookTable>;
+            if (cart == null)
+            {
+                cart = new List<BookTable>();
+            }
+
+            cart.Add(book);
+            Session["Cart"] = cart;
+
+            TempData["message"] = "Produsul a fost adăugat în coș.";
+            return RedirectToAction("Product_details", new { name = name });
+        }
+
+        [HttpPost]
+        public JsonResult FinalizeOrder()
+        {
+
+            Session["Cart"] = new List<BookTable>();
+
+            return Json(new { success = true, message = "Comanda a fost plasată cu success!" });
+        }
+
+        public ActionResult Cart()
+        {
+            GetHeaderData();
+            var cart = Session["Cart"] as List<BookTable> ?? new List<BookTable>();
+            ViewBag.Cart = cart;
+            return View();
+        }
+
         public ActionResult Shop(string type)
         {
             GetHeaderData();

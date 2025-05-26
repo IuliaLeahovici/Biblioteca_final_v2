@@ -22,9 +22,18 @@
                 <h4>@book.Name</h4>
                 <span class="price">@book.Price $</span>
                 <p>"@book.Description</p>
-                <form id="qty" action="#">
-                    <input type="number" min="1" class="form-control" id="1" aria-describedby="quantity" placeholder="1">
-                    <button type="submit"><i class="fa fa-shopping-bag"></i> Adaugă în coș</button>
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-success">@TempData["message"]</div>
+                }
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["error"]</div>
+                }
+
+                <form method="post" action="@Url.Action("AddToCart", "Home")">
+                    <input type="hidden" name="name" value="@book.Name" />
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-bag"></i> Adaugă în coș</button>
                 </form>
                 <ul>
                     <li><span>Autor:</span>@book.Author</li>

@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Coș de cumpărături";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var cart = ViewBag.Cart as List<eUseControl.Data.Entities.Product.BookTable>;
+}
+
+<style>
+    #checkout-form {
+        display: none;
+        max-width: 400px;
+        margin-top: 20px;
+        padding: 20px;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        background-color: #f0f8ff;
+    }
+
+    #order-success {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        background-color: #0094ff;
+        color: white;
+        font-weight: bold;
+        max-width: 400px;
+    }
+</style>
+
+<div class="page-heading header-text">
+    <h3>Coșul de cumpărături</h3>
+</div>
+
+<div class="contact-page section most-played">
+    <div class="container">
+        @if (cart == null || !cart.Any())
+        {
+            <p>Coșul este gol.</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Imagine</th>
+                        <th>Titlu</th>
+                        <th>Autor</th>
+                        <th>Preț</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in cart)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content("~/assets/images/books/" + item.Image)" style="max-width:100px; height: auto;" /></td>
+                            <td>@item.Name</td>
+                            <td>@item.Author</td>
+                            <td>@item.Price $</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="mt-4">
+                <button id="show-checkout-btn" class="btn btn-primary">
+                    Finalizează comanda
+                </button>
+            </div>
+
+            <div id="checkout-form" class="mt-4">
+                <h4>Date livrare</h4>
+                <form id="order-form">
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nume complet" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="tel" class="form-control" placeholder="Număr de telefon" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" placeholder="Adresă de livrare" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Efectuează comanda</button>
+                </form>
+            </div>
+
+            <div id="order-success">Comanda a fost plasată cu succes! Mulțumim pentru achiziție! </div>
+        }
+    </div>
+</div>
+
+<script>
+    document.getElementById('checkout-form').style.display = 'none';
+
+    document.getElementById('show-checkout-btn').addEventListener('click', function () {
+        document.getElementById('checkout-form').style.display = 'block';
+        this.style.display = 'none';
+    });
+
+    document.getElementById('order-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        fetch('@Url.Action("FinalizeOrder", "Home")', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('checkout-form').style.display = 'none';
+
+            const successMsg = document.getElementById('order-success');
+            successMsg.innerText = data.message || "Comanda a fost plasată cu succes! Mulțumim!";
+            successMsg.style.display = 'block';
+
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('A apărut o eroare la plasarea comenzii. Încearcă din nou.');
+        });
+    });
+</script>
